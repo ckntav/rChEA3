@@ -26,6 +26,6 @@ chea3_query <- function(genes, query_name = "rChEA3_query") {
     txt <- httr::content(resp, "text", encoding = "UTF-8")
     parsed <- jsonlite::fromJSON(txt)
 
-    # on retourne une liste de data.frames (un par collection)
+    # results as list of R dataframes (one per collection)
     parsed
 }
