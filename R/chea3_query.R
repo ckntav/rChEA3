@@ -1,10 +1,28 @@
+.check_chea3_collections <- function(x) {
+    expected <- c("Integrated--meanRank", "Integrated--topRank",
+                  "GTEx--Coexpression", "ARCHS4--Coexpression",
+                  "ENCODE--ChIP-seq", "ReMap--ChIP-seq",
+                  "Literature--ChIP-seq", "Enrichr--Queries")
+    missing <- setdiff(expected, names(x))
+    if (length(missing)) {
+        warning("These collections are missing in the response: ",
+                paste(missing, collapse = ", "))
+    }
+    invisible(x)
+}
+
 #' Query ChEA3 API for TF enrichment
 #'
 #' @param genes Character vector of HGNC gene symbols.
 #' @param query_name Optional query name (default: "rChEA3_query").
 #'
-#' @return A named list of data frames, one per collection, containing
-#'   transcription factor enrichment results.
+#' @return A named list of data frames. Each element corresponds to a ChEA3
+#'   collection and contains an enrichment table with transcription factors and
+#'   their statistics. The expected names are:
+#'   c("Integrated--meanRank", "Integrated--topRank",
+#'     "GTEx--Coexpression", "ARCHS4--Coexpression",
+#'     "ENCODE--ChIP-seq", "ReMap--ChIP-seq",
+#'     "Literature--ChIP-seq", "Enrichr--Queries").
 #' @export
 #'
 #' @examples
@@ -27,5 +45,6 @@ chea3_query <- function(genes, query_name = "rChEA3_query") {
     parsed <- jsonlite::fromJSON(txt)
 
     # results as list of R dataframes (one per collection)
-    parsed
+    .check_chea3_collections(parsed)
+    .chea3_clean_all(parsed)
 }

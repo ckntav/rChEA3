@@ -12,8 +12,13 @@ chea3_query(genes, query_name = "rChEA3_query")
 \item{query_name}{Optional query name (default: "rChEA3_query").}
 }
 \value{
-A named list of data frames, one per collection, containing
-transcription factor enrichment results.
+A named list of data frames. Each element corresponds to a ChEA3
+collection and contains an enrichment table with transcription factors and
+their statistics. The expected names are:
+c("Integrated--meanRank", "Integrated--topRank",
+"GTEx--Coexpression", "ARCHS4--Coexpression",
+"ENCODE--ChIP-seq", "ReMap--ChIP-seq",
+"Literature--ChIP-seq", "Enrichr--Queries").
 }
 \description{
 Query ChEA3 API for TF enrichment
