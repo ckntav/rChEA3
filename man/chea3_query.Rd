@@ -25,6 +25,6 @@ Query ChEA3 API for TF enrichment
 }
 \examples{
 \dontrun{
-chea3_query(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+results <- chea3_query(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
 }
 }

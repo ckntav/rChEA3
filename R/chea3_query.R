@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' chea3_query(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+#' results <- chea3_query(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
 #' }
 chea3_query <- function(genes, query_name = "rChEA3_query") {
     stopifnot(is.character(genes), length(genes) > 0)
