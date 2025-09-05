@@ -4,12 +4,15 @@
 \alias{chea3_query}
 \title{Query ChEA3 API for TF enrichment}
 \usage{
-chea3_query(genes, query_name = "rChEA3_query")
+chea3_query(genes, query_name = "rChEA3_query", verbose = TRUE)
 }
 \arguments{
 \item{genes}{Character vector of HGNC gene symbols.}
 
 \item{query_name}{Optional query name (default: "rChEA3_query").}
+
+\item{verbose}{Logical; if TRUE, print a grouped summary of available
+result collections (default: TRUE).}
 }
 \value{
 A named list of data frames. Each element corresponds to a ChEA3

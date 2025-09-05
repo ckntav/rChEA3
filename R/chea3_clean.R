@@ -35,8 +35,7 @@
         df <- dplyr::mutate(
             df,
             dplyr::across(tidyselect::any_of("Rank"),  as.integer),
-            dplyr::across(tidyselect::any_of("Score"), as.numeric),
-            dplyr::across(tidyselect::any_of("TF"),    as.factor)
+            dplyr::across(tidyselect::any_of("Score"), as.numeric)
         )
     } else {
         df <- dplyr::mutate(
