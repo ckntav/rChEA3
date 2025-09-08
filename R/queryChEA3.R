@@ -1,12 +1,19 @@
+#' @keywords internal
 .check_chea3_collections <- function(x) {
     expected <- c("Integrated--meanRank", "Integrated--topRank",
                   "GTEx--Coexpression", "ARCHS4--Coexpression",
                   "ENCODE--ChIP-seq", "ReMap--ChIP-seq",
                   "Literature--ChIP-seq", "Enrichr--Queries")
-    missing <- setdiff(expected, names(x))
+    missing    <- setdiff(expected, names(x))
+    unexpected <- setdiff(names(x), expected)
+
     if (length(missing)) {
         warning("These collections are missing in the response: ",
-                paste(missing, collapse = ", "))
+                paste(missing, collapse = ", "), call. = FALSE)
+    }
+    if (length(unexpected)) {
+        warning("Unexpected collections in the response: ",
+                paste(unexpected, collapse = ", "), call. = FALSE)
     }
     invisible(x)
 }
@@ -84,6 +91,36 @@
     invisible(NULL)
 }
 
+#' @keywords internal
+.rchea3_clean_all <- function(results) {
+    stopifnot(is.list(results))
+    out <- lapply(names(results), function(nm) .rchea3_clean(results[[nm]], nm))
+    rlang::set_names(out, names(results))
+}
+
+#' @keywords internal
+.rchea3_clean <- function(df, collection) {
+    stopifnot(is.data.frame(df), is.character(collection), length(collection) == 1)
+
+    if (collection %in% c("Integrated--meanRank", "Integrated--topRank")) {
+        df <- dplyr::mutate(
+            df,
+            dplyr::across(tidyselect::any_of("Rank"),  as.integer),
+            dplyr::across(tidyselect::any_of("Score"), as.numeric)
+        )
+    } else {
+        df <- dplyr::mutate(
+            df,
+            dplyr::across(tidyselect::any_of(c("Rank", "Intersect", "Set length")),
+                          as.integer),
+            dplyr::across(tidyselect::any_of(c("Scaled Rank", "FET p-value",
+                                               "FDR", "Odds Ratio")),
+                          as.numeric)
+        )
+    }
+    df
+}
+
 #' Query ChEA3 API for TF enrichment
 #'
 #' @param genes Character vector of HGNC gene symbols.
@@ -102,9 +139,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' results <- chea3_query(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+#' results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
 #' }
-chea3_query <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
+queryChEA3 <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
     stopifnot(is.character(genes), length(genes) > 0)
 
     url <- "https://maayanlab.cloud/chea3/api/enrich/"
@@ -126,5 +163,5 @@ chea3_query <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
         .chea3_print_available(parsed)
     }
 
-    .chea3_clean_all(parsed)
+    .rchea3_clean_all(parsed)
 }
