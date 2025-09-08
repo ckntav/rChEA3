@@ -8,7 +8,7 @@
 #' @return (Invisibly) a named list of data frames, each truncated to the first
 #'   \code{n} rows (and \code{columns} if provided).
 #' @export
-chea3_topn <- function(
+displayTopN <- function(
         results,
         n = 10,
         columns = c("Rank", "TF", "Scaled Rank", "Set_name", "Intersect", "Score", "FET p-value", "FDR",

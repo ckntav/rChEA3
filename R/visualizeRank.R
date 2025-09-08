@@ -45,7 +45,7 @@
 #' res_chip <- chea3_query(c("MYC","FOXO1"))[["ENCODE--ChIP-seq"]]
 #' chea3_visualizeRank(res_chip, y_metric = "FDR", fdr_threshold = 0.01)
 #' }
-chea3_visualizeRank <- function(df_result,
+visualizeRank <- function(df_result,
                                 y_metric = c("auto", "FDR", "FET p-value", "Score"),
                                 fdr_threshold = 0.05,
                                 p_threshold = 0.05,

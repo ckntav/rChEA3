@@ -25,5 +25,6 @@ Imports:
     ggplot2,
     httr,
     jsonlite,
+    lubridate,
     rlang,
     tidyselect
