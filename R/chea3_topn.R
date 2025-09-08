@@ -11,8 +11,8 @@
 chea3_topn <- function(
         results,
         n = 10,
-        columns = c("Rank", "TF", "Scaled Rank", "Score", "FET p-value", "FDR",
-                    "Odds Ratio", "Overlapping_Genes")
+        columns = c("Rank", "TF", "Scaled Rank", "Set_name", "Intersect", "Score", "FET p-value", "FDR",
+                    "Odds Ratio")
 ) {
     if (!is.list(results) || is.null(names(results))) {
         stop("`results` must be a *named* list of data frames.")
@@ -73,18 +73,18 @@ chea3_topn <- function(
             cat("    ", green(tick), " ", bold(label), " - ", desc, "\n", sep = "")
             if (nrow(df) == 0L) {
                 cat("        ", italic("(no rows)\n"), sep = "")
-                out_list[[internal]] <- df
+                # out_list[[internal]] <- df
             } else {
                 top_df <- utils::head(df, n)
                 # indent printed table a bit (row.names always FALSE)
                 capture <- utils::capture.output(print(top_df, row.names = FALSE))
                 cat(paste0("        ", capture), sep = "\n")
                 cat("\n")
-                out_list[[internal]] <- top_df
+                # out_list[[internal]] <- top_df
             }
         }
         cat(paste0("  ", paste(rep(dash, 20), collapse = "")), "\n")
     }
 
-    invisible(out_list)
+    # invisible(out_list)
 }

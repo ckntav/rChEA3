@@ -7,8 +7,8 @@
 chea3_topn(
   results,
   n = 10,
-  columns = c("Rank", "TF", "Scaled Rank", "Score", "FET p-value", "FDR", "Odds Ratio",
-    "Overlapping_Genes")
+  columns = c("Rank", "TF", "Scaled Rank", "Set_name", "Intersect", "Score",
+    "FET p-value", "FDR", "Odds Ratio")
 )
 }
 \arguments{
