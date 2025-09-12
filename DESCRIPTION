@@ -27,7 +27,8 @@ Imports:
     jsonlite,
     lubridate,
     rlang,
-    tidyselect
+    tidyselect,
+    writexl
 Depends: 
-    R (>= 3.5)
+    R (>= 4.1.0)
 LazyData: true

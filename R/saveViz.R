@@ -18,7 +18,7 @@
 #'   Defaults to `"pdf"`.
 #' @param with_date Logical (default `TRUE`). Whether to prepend the
 #'   current date (from `today`) to the filename.
-#' @param width Width of the output file in inches. Default is 5.
+#' @param width Width of the output file in inches. Default is 8.
 #' @param height Height of the output file in inches. Default is 5.
 #' @param resolution Resolution in DPI (only used for PNG). Default is
 #'   300.
@@ -33,7 +33,7 @@ saveViz <- function(viz,
                     output_file = "figure_rChEA3",
                     format = "pdf",
                     with_date = TRUE,
-                    width = 5,
+                    width = 8,
                     height = 5,
                     resolution = 300,
                     verbose = TRUE) {

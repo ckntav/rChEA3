@@ -10,7 +10,7 @@ saveViz(
   output_file = "figure_rChEA3",
   format = "pdf",
   with_date = TRUE,
-  width = 5,
+  width = 8,
   height = 5,
   resolution = 300,
   verbose = TRUE
@@ -33,7 +33,7 @@ Defaults to \code{"pdf"}.}
 \item{with_date}{Logical (default \code{TRUE}). Whether to prepend the
 current date (from \code{today}) to the filename.}
 
-\item{width}{Width of the output file in inches. Default is 5.}
+\item{width}{Width of the output file in inches. Default is 8.}
 
 \item{height}{Height of the output file in inches. Default is 5.}
 
