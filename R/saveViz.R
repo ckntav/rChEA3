@@ -50,7 +50,7 @@ saveViz <- function(viz,
     filepath <- file.path(output_dir, paste0(output_file, ".", format))
 
     switch(format,
-           pdf = grDevices::pdf(file = filepath, width = width, height = height),
+           pdf = grDevices::cairo_pdf(file = filepath, width = width, height = height),
            png = grDevices::png(file = filepath, width = width, height = height, units = "in", res = resolution),
            svg = grDevices::svg(file = filepath, width = width, height = height))
 
