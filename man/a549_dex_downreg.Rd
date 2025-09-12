@@ -21,7 +21,7 @@ and tests, only the first 15 downregulated gene symbols are included here.
 \details{
 The full list of differentially expressed genes (activated and repressed) is
 provided as Supplementary Table S3 in Tav \emph{et al.} (2023). The raw Excel
-file can be downloaded directly from Frontiers:
+file can be downloaded directly from \emph{Frontiers in Genetics}:
 \url{https://www.frontiersin.org/api/v4/articles/1237092/file/Table_3.XLSX/1237092_supplementary-materials_tables_3_xlsx/1}.
 
 In this package, we subset the data to only the first 15 repressed genes,
