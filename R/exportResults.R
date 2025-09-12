@@ -25,26 +25,62 @@ exportResults <- function(results,
                           output_file = "rChEA3_results",
                           with_date = TRUE,
                           verbose = TRUE) {
-    stopifnot(requireNamespace("writexl", quietly = TRUE))
-
-    if (!dir.exists(output_dir)) {
-        dir.create(output_dir, recursive = TRUE)
+    if (!requireNamespace("writexl", quietly = TRUE)) {
+        stop("Package 'writexl' is required but not installed.", call. = FALSE)
     }
 
+    # Accept a single data.frame as convenience
+    if (is.data.frame(results)) {
+        results <- list(Results = results)
+    }
+    if (!is.list(results) || length(results) == 0) {
+        stop("'results' must be a non-empty list of data frames (or a data frame).", call. = FALSE)
+    }
+
+    # Desired sheet order (only keep what exists)
+    desired_order <- c(
+        "Integrated--meanRank",
+        "Integrated--topRank",
+        "ENCODE--ChIP-seq",
+        "ReMap--ChIP-seq",
+        "Literature--ChIP-seq",
+        "ARCHS4--Coexpression",
+        "GTEx--Coexpression",
+        "Enrichr--Queries"
+    )
+    results <- results[intersect(desired_order, names(results))]
+
+    # Coerce all to data.frame
+    to_write <- lapply(results, function(x) {
+        if (!is.data.frame(x)) x <- as.data.frame(x)
+        x
+    })
+
+    # Ensure output dir
+    if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+
+    # Strip accidental .xlsx extension from output_file
+    output_file <- sub("\\.xlsx$", "", output_file, ignore.case = TRUE)
     if (isTRUE(with_date)) {
         output_file <- paste0(today, "_", output_file)
     }
-
     filepath <- file.path(output_dir, paste0(output_file, ".xlsx"))
 
-    # ensure sheet names are valid (Excel ≤ 31 chars, unique)
-    sheet_names <- substr(names(results), 1, 31)
-    sheet_names <- make.unique(sheet_names)
+    # Sanitize sheet names (Excel ≤31 chars; forbid : \ / ? * [ ])
+    sanitize_sheet <- function(x) {
+        if (length(x) == 0 || is.na(x) || !nzchar(x)) x <- "Sheet"
+        x <- gsub("[:\\\\/\\?\\*\\[\\]]", "-", x)
+        substr(x, 1, 31)
+    }
+    nm <- names(to_write)
+    if (is.null(nm)) nm <- rep("Sheet", length(to_write))
+    nm <- vapply(nm, sanitize_sheet, character(1))
+    nm <- make.unique(nm, sep = "_")
+    names(to_write) <- nm
 
-    # convert GRanges to data.frame if needed
-    names(results) <- sheet_names
+    # Write workbook
+    writexl::write_xlsx(x = to_write, path = filepath)
 
-    writexl::write_xlsx(results, path = filepath)
     if (isTRUE(verbose)) {
         message(" > rChEA3 results saved in ", filepath)
     }
