@@ -15,19 +15,14 @@ knitr::opts_chunk$set(
 
 # rChEA3
 
-<!-- badges: start -->
-<!-- badges: end -->
+![Maintainer](https://img.shields.io/badge/maintainer-ckntav-blue)
+![Last commit](https://img.shields.io/github/last-commit/ckntav/rChEA3)
 
-An R client for the ChEA3 transcription factor enrichment API. Submit gene
-lists, retrieve TF rankings from multiple evidence sources, and integrate
-results directly into your R/Bioconductor analysis pipeline.
+An R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API.
 
-An R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor
-enrichment API.  
-ChEA3 integrates ChIP-seq, co-expression, and literature evidence to prioritize
-transcription factors regulating a given gene set.  
-This package provides convenient functions to query the API, retrieve results
-across multiple collections, and prepare outputs for downstream analysis.
+While ChEA3 is only available online as a web server, rChEA3 provides access to this tool directly in R, streamlining transcription factor enrichment into your workflow. Submit gene lists, retrieve TF rankings from multiple evidence sources (ChIP-seq, co-expression, literature), and integrate results into your R/Bioconductor analysis pipeline.
+
+The package includes convenient functions to query the API, retrieve results across collections, prepare outputs for downstream analysis, and generate publication-ready figures.
 
 ## Installation
 
@@ -38,32 +33,67 @@ You can install the development version of rChEA3 from [GitHub](https://github.c
 pak::pak("ckntav/rChEA3")
 ```
 
-## Example
+## Quick start
 
-This is a basic example which shows you how to solve a common problem:
+This quick example demonstrates how to conveniently interogate the ChEA3 tool.
 
-```{r example}
+```{r, load_library}
 library(rChEA3)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### 1. Query ChEA3
 
-```{r cars}
-summary(cars)
+```{r, query}
+my_gene_list <- c("KLK3", "AR", "FKBP5", "TMPRSS2", "KLK2", "CYP1B1")
+
+results <- queryChEA3(my_gene_list)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+This function sends the query gene list to the ChEA3 web server and performs the transcription factor enrichment analysis.
+Once the analysis is complete, the available results from different collections are displayed.
 
-You can also embed plots, for example:
+### 2. Inspect top results
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+The function displayTopN() shows the top results from each collection.
+By default, the top 10 transcription factors are displayed for every collection, regardless of whether the ranking is based on score, p-value, or FDR.
+
+```{r, inspect}
+displayTopN(results)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+### 3. Extract one particular result
+
+The function queryChEA3() returns a list of data frames, one for each ChEA3 collection.
+Each element of the list contains transcription factors (TFs) with their associated statistics (rank, score, p-value, or FDR depending on the collection).
+
+To access a specific result table, use the variable storing the results and specify the corresponding collection name. These tables can be indexed by name, explored, filtered, and integrated into downstream R/Bioconductor analyses.
+
+As an example, the Mean Rank integrated results can be retrieved with:
+
+```{r, extract}
+meanRank_results <- results[["Integrated--meanRank"]]
+head(meanRank_results)
+```
+
+This table contains the averaged ranks of transcription factors across all ChEA3 libraries, providing a global view of TF enrichment for your gene set.
+
+#### 4. Visualize results
+
+The function visualizeRank() creates a bar plot of the top-ranked transcription factors from a result table.
+By default, the plot displays the most significant TFs in descending order, making it easy to quickly identify the strongest candidates for your gene list.
+
+```{r visualize, fig.width=5, fig.height=3, dpi=300}
+visualizeRank(meanRank_results)
+```
+
+## Contributing
+
+Pull requests are welcome. If you find a bug, have a suggestion, or want to
+add a feature, please open an issue first to discuss what you would like
+to change.
 
 ## Citation
 If you use this package, please cite:
+
 Keiichiro D. et al. (2019). ChEA3: transcription factor enrichment analysis by orthogonal omics integration. Nucleic Acids Research, 47(W1), W212–W224.
 
