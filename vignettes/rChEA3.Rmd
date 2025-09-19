@@ -1,0 +1,81 @@
+---
+title: "rChEA3: An R client for ChEA3 transcription factor enrichment API"
+author: "Christophe Tav"
+date: "September 2025"
+output:
+    html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+vignette: >
+  %\VignetteIndexEntry{rChEA3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+rChEA3 is an R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API.
+
+While ChEA3 is only available online as a web server, rChEA3 provides access to this tool directly in R, streamlining transcription factor enrichment into your workflow. Submit gene lists, retrieve TF rankings from multiple evidence sources (ChIP-seq, co-expression, literature), and integrate results into your R/Bioconductor analysis pipeline.
+
+The package includes convenient functions to query the API, retrieve results across collections, prepare outputs for downstream analysis, and generate publication-ready figures.
+
+# Example workflow
+
+This section demonstrates a typical workflow with rChEA3, from submitting a gene list to retrieving transcription factor enrichment results. The examples illustrate how to interact with the ChEA3 API, explore the different collections, and visualize results in a clear, publication-ready format.
+
+We start by loading the package:
+```{r setup}
+library(rChEA3)
+```
+
+## 1. Submit a gene list
+
+Provide a vector of gene symbols as input.
+
+```{r submit}
+genes <- c("TP53", "ESR1", "MYC", "NIPBL", "BRCA1")
+results <- queryChEA3(genes)
+```
+
+## 2. Inspect top results
+
+The function displayTopN() allows a quick inspection of the results by showing the top transcription factors from each collection.
+By default, the top 10 transcription factors are displayed without applying thresholds.
+
+```{r inspect}
+displayTopN(results)
+```
+
+## 3. Extract the result for one particular collection
+
+Each ChEA3 collection can be accessed by name. For example, to retrieve the integrated ranking:
+
+```{r extract}
+meanRank_results <- results[["Integrated--meanRank"]]
+head(meanRank_results)
+```
+
+## 4. Generate the visualization
+
+```{r visualize}
+visualizeRank(meanRank_results)
+```
+
+# Session info
+
+```{r session-info}
+sessionInfo()
+```
+
+# References
+
+paper ChEA3
