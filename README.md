@@ -79,10 +79,10 @@ displayed.
 
 ### 2. Inspect top results
 
-The function displayTopN() shows the top results from each collection.
-By default, the top 10 transcription factors are displayed for every
-collection, regardless of whether the ranking is based on score,
-p-value, or FDR.
+The function displayTopN() allows quick inspection of the results by
+showing the top-ranked transcription factors from each collection. By
+default, the top 10 transcription factors are displayed for every
+collection, without applying any threshold on score, p-value, or FDR.
 
 ``` r
 displayTopN(results)
@@ -235,7 +235,7 @@ displayTopN(results)
 #>   ────────────────────
 ```
 
-### 3. Extract one particular result
+### 3. Extract results from a specific collection
 
 The function queryChEA3() returns a list of data frames, one for each
 ChEA3 collection. Each element of the list contains transcription
