@@ -22,11 +22,17 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-rChEA3 is an R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API.
+rChEA3 is an R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API
 
 While ChEA3 is only available online as a web server, rChEA3 provides access to this tool directly in R, streamlining transcription factor enrichment into your workflow. Submit gene lists, retrieve TF rankings from multiple evidence sources (ChIP-seq, co-expression, literature), and integrate results into your R/Bioconductor analysis pipeline.
 
 The package includes convenient functions to query the API, retrieve results across collections, prepare outputs for downstream analysis, and generate publication-ready figures.
+
+<br>
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("figures/20250925_graphical_abstract_rChEA3_v1.png")
+```
+<br>
 
 # Example workflow
 
@@ -78,4 +84,6 @@ sessionInfo()
 
 # References
 
-paper ChEA3
+If you use this package, please cite:
+
+Keiichiro D. et al. (2019). ChEA3: transcription factor enrichment analysis by orthogonal omics integration. Nucleic Acids Research, 47(W1), W212–W224.

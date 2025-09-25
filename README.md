@@ -6,8 +6,8 @@
 ![Maintainer](https://img.shields.io/badge/maintainer-ckntav-blue)
 ![Last commit](https://img.shields.io/github/last-commit/ckntav/rChEA3)
 
-An R client for the [ChEA3](https://maayanlab.cloud/chea3/)
-transcription factor enrichment API.
+**An R client for the [ChEA3](https://maayanlab.cloud/chea3/)
+transcription factor enrichment API.**
 
 While ChEA3 is only available online as a web server, rChEA3 provides
 access to this tool directly in R, streamlining transcription factor
@@ -18,6 +18,11 @@ and integrate results into your R/Bioconductor analysis pipeline.
 The package includes convenient functions to query the API, retrieve
 results across collections, prepare outputs for downstream analysis, and
 generate publication-ready figures.
+
+<p align="center">
+
+<img src="man/figures/20250925_graphical_abstract_rChEA3_v1.png" width="800"/>
+</p>
 
 ## Installation
 
