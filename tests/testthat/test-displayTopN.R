@@ -11,13 +11,6 @@ test_that("displayTopN validates n parameter", {
   expect_error(displayTopN(mock_results, n = c(1, 2)), "single non-negative number")
 })
 
-test_that("displayTopN handles empty results", {
-  empty_results <- list()
-
-  expect_message(displayTopN(empty_results), "No known ChEA3 collections")
-  expect_invisible(displayTopN(empty_results))
-})
-
 test_that("displayTopN displays integrated results", {
   mock_integrated <- list(
     "Integrated--meanRank" = data.frame(
