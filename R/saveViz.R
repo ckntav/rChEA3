@@ -44,7 +44,7 @@ saveViz <- function(viz,
     }
 
     if (isTRUE(with_date)) {
-        output_file <- paste0(today, "_", output_file)
+        output_file <- paste0(get_today(), "_", output_file)
     }
 
     filepath <- file.path(output_dir, paste0(output_file, ".", format))
