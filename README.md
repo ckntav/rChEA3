@@ -36,8 +36,8 @@ pak::pak("ckntav/rChEA3")
 
 ## Quick start
 
-This quick example demonstrates how to conveniently interogate the ChEA3
-tool.
+This quick example demonstrates how to conveniently interrogate the
+ChEA3 tool.
 
 ``` r
 library(rChEA3)
@@ -81,6 +81,10 @@ This function sends the query gene list to the ChEA3 web server and
 performs the transcription factor enrichment analysis. Once the analysis
 is complete, the available results from different collections are
 displayed.
+
+> **Note:** For detailed information about the different ChEA3
+> collections and their underlying methodology, visit the [ChEA3 web
+> server](https://maayanlab.cloud/chea3/).
 
 ### 2. Inspect top results
 
@@ -284,7 +288,7 @@ This table contains the averaged ranks of transcription factors across
 all ChEA3 libraries, providing a global view of TF enrichment for your
 gene set.
 
-#### 4. Visualize results
+### 4. Visualize results
 
 The function visualizeRank() creates a bar plot of the top-ranked
 transcription factors from a result table. By default, the plot displays
@@ -307,6 +311,15 @@ like to change.
 
 If you use this package, please cite:
 
-Keiichiro D. et al. (2019). ChEA3: transcription factor enrichment
-analysis by orthogonal omics integration. Nucleic Acids Research,
-47(W1), W212–W224.
+Keenan, A.B., Torre, D., Lachmann, A., Leong, A.K., Wojciechowicz, M.L.,
+Utti, V., Jagodnik, K.M., Kropiwnicki, E., Wang, Z., & Ma’ayan, A.
+(2019). ChEA3: transcription factor enrichment analysis by orthogonal
+omics integration. *Nucleic Acids Research*, 47(W1), W212–W224.
+[doi:10.1093/nar/gkz446](https://doi.org/10.1093/nar/gkz446)
+
+## Resources
+
+- [ChEA3 web server](https://maayanlab.cloud/chea3/) - For detailed
+  information about collections and methodology
+- [Original Publication](https://doi.org/10.1093/nar/gkz446) - ChEA3
+  paper in Nucleic Acids Research
