@@ -12,7 +12,7 @@ displayTopN(
 )
 }
 \arguments{
-\item{results}{A named list of data frames (the output of \code{chea3_query()}).}
+\item{results}{A named list of data frames (the output of \code{queryChEA3()}).}
 
 \item{n}{Number of rows to show per table (default: 10).}
 

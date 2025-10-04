@@ -1,6 +1,6 @@
 #' Print the top-n rows for each ChEA3 collection
 #'
-#' @param results A named list of data frames (the output of `chea3_query()`).
+#' @param results A named list of data frames (the output of `queryChEA3()`).
 #' @param n Number of rows to show per table (default: 10).
 #' @param columns Optional character vector of column names to display
 #'   (keeps intersection with what's present in each data frame).

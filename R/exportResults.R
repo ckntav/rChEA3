@@ -4,7 +4,7 @@
 #' to an Excel workbook, with one sheet per collection.
 #'
 #' @param results A named list of data frames (e.g., the return of
-#'   \code{chea3_query()}), where each element corresponds to a ChEA3
+#'   \code{queryChEA3()}), where each element corresponds to a ChEA3
 #'   collection (e.g., "Integrated--meanRank", "ENCODE--ChIP-seq", etc.).
 #'   A single data frame is also accepted and will be written to one sheet.
 #' @param output_dir Directory where the workbook will be written. Default: \code{"."}.

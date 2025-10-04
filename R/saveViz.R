@@ -8,7 +8,7 @@
 #' the filename.
 #'
 #' @param viz A visualization object typically created by
-#'   `chea3_visualizeRank()`, but can also be a `ggplot2` plot or
+#'   `visualizeRank()`, but can also be a `ggplot2` plot or
 #'   any other plot object printable with `print()`.
 #' @param output_dir A string specifying the output directory. Defaults
 #'   to `"."`.

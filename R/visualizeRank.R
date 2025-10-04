@@ -38,12 +38,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Assuming `res` is a data frame returned by chea3_query()[["Integrated--meanRank"]]
-#' chea3_visualizeRank(res, y_metric = "Score", top_n = 15)
+#' # Assuming `res` is a data frame returned by queryChEA3()[["Integrated--meanRank"]]
+#' visualizeRank(res, y_metric = "Score", top_n = 15)
 #'
 #' # Plot based on FDR
-#' res_chip <- chea3_query(c("MYC","FOXO1"))[["ENCODE--ChIP-seq"]]
-#' chea3_visualizeRank(res_chip, y_metric = "FDR", fdr_threshold = 0.01)
+#' res_chip <- queryChEA3(c("MYC","FOXO1"))[["ENCODE--ChIP-seq"]]
+#' visualizeRank(res_chip, y_metric = "FDR", fdr_threshold = 0.01)
 #' }
 visualizeRank <- function(df_result,
                                 y_metric = c("auto", "FDR", "FET p-value", "Score"),

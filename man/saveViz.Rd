@@ -18,7 +18,7 @@ saveViz(
 }
 \arguments{
 \item{viz}{A visualization object typically created by
-\code{chea3_visualizeRank()}, but can also be a \code{ggplot2} plot or
+\code{visualizeRank()}, but can also be a \code{ggplot2} plot or
 any other plot object printable with \code{print()}.}
 
 \item{output_dir}{A string specifying the output directory. Defaults
