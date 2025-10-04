@@ -83,8 +83,8 @@ is complete, the available results from different collections are
 displayed.
 
 > **Note:** For detailed information about the different ChEA3
-> collections and their underlying methodology, visit the [ChEA3 web
-> server](https://maayanlab.cloud/chea3/).
+> collections and their underlying methodology, see [Keenan et al.,
+> 2019](https://doi.org/10.1093/nar/gkz446).
 
 ### 2. Inspect top results
 

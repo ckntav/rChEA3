@@ -4,9 +4,9 @@ author: "Christophe Tav"
 date: "September 2025"
 output:
     html_document:
-    toc: true
-    toc_depth: 3
-    number_sections: false
+        toc: true
+        toc_depth: 3
+        number_sections: false
 vignette: >
   %\VignetteIndexEntry{rChEA3}
   %\VignetteEngine{knitr::rmarkdown}
@@ -19,10 +19,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+```{css, echo=FALSE}
+pre code {
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+```
 
 # Introduction
 
-rChEA3 is an R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API
+rChEA3 is an R client for the [ChEA3](https://maayanlab.cloud/chea3/) transcription factor enrichment API.
 
 While ChEA3 is only available online as a web server, rChEA3 provides access to this tool directly in R, streamlining transcription factor enrichment into your workflow. Submit gene lists, retrieve TF rankings from multiple evidence sources (ChIP-seq, co-expression, literature), and integrate results into your R/Bioconductor analysis pipeline.
 
@@ -51,6 +57,8 @@ Provide a vector of gene symbols as input.
 genes <- c("TP53", "ESR1", "MYC", "NIPBL", "BRCA1")
 results <- queryChEA3(genes)
 ```
+
+> **Note:** For detailed information about the different ChEA3 collections and their underlying methodology, see [Keenan et al., 2019](https://doi.org/10.1093/nar/gkz446).
 
 ## 2. Inspect top results
 
@@ -82,8 +90,14 @@ visualizeRank(meanRank_results)
 sessionInfo()
 ```
 
-# References
+# Citation
 
 If you use this package, please cite:
 
 Keenan, A.B., Torre, D., Lachmann, A., Leong, A.K., Wojciechowicz, M.L., Utti, V., Jagodnik, K.M., Kropiwnicki, E., Wang, Z., & Ma'ayan, A. (2019). ChEA3: transcription factor enrichment analysis by orthogonal omics integration. *Nucleic Acids Research*, 47(W1), W212–W224. [doi:10.1093/nar/gkz446](https://doi.org/10.1093/nar/gkz446)
+
+# Resources
+
+- [ChEA3 Web Server](https://maayanlab.cloud/chea3/) - Interactive tool and detailed documentation
+- [ChEA3 Publication](https://doi.org/10.1093/nar/gkz446) - Original research article
+- [rChEA3 GitHub](https://github.com/ckntav/rChEA3) - Package source code and issues
