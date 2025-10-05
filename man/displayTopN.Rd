@@ -26,3 +26,15 @@ displayTopN(
 \description{
 Print the top-n rows for each ChEA3 collection
 }
+\examples{
+\donttest{
+    genes <- c("TP53", "MYC", "STAT3", "FOXO1", "BRCA1")
+    results <- queryChEA3(genes, verbose = FALSE)
+
+    # Display top 10 TFs from each collection
+    displayTopN(results)
+
+    # Display only top 5 with specific columns
+    displayTopN(results, n = 5, columns = c("Rank", "TF", "Score", "FDR"))
+}
+}
