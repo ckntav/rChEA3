@@ -77,6 +77,241 @@
 <code>n</code> rows (and <code>columns</code> if provided).</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span>    <span class="va">genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"TP53"</span>, <span class="st">"MYC"</span>, <span class="st">"STAT3"</span>, <span class="st">"FOXO1"</span>, <span class="st">"BRCA1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="queryChEA3.html">queryChEA3</a></span><span class="op">(</span><span class="va">genes</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>    <span class="co"># Display top 10 TFs from each collection</span></span></span>
+<span class="r-in"><span>    <span class="fu">displayTopN</span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Top 10 per collection</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Integrated Results</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Mean Rank</span> - Average integrated ranks across libraries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank      TF  Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  ZBTB24  48.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  CSRNP1  66.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3   FOSL2  66.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   RUNX1  73.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5    ETS2  79.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6    ANHX  86.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7     MYB  92.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8   KLF15 110.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9 POU5F1B 111.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10    ELF1 113.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Top Rank</span> - Top integrated rank across libraries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF     Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 ZBTB24 0.0006143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2 HIVEP1 0.0006223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3    SRY 0.0007123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   ZXDB 0.0012290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   MAFF 0.0012450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6  MYOD1 0.0014250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7 ZNF266 0.0018430</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8 ZNF800 0.0018670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9     AR 0.0021370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10 ZNF575 0.0024570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">ChIP-Seq</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ENCODE</span> - Interactions mined from the ENCODE project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF Scaled Rank             Set_name Intersect FET p-value  FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  CEBPB    0.008475      CEBPB_C2C12_MM9         3    0.009772 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  CEBPD    0.016950      CEBPD_K562_HG19         2    0.018070 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 ZNF384    0.025420    ZNF384_CH12LX_MM9         3    0.019260 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   IRF3    0.033900     IRF3_HELAS3_HG19         3    0.019570 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   E2F4    0.042370      E2F4_CH12LX_MM9         3    0.021010 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6   ATF2    0.050850     ATF2_H1HESC_HG19         3    0.021370 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7   CTCF    0.059320 CTCF_OSTEOBLAST_HG19         3    0.022910 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8   ATF3    0.067800       ATF3_A549_HG19         3    0.023260 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9   JUND    0.076270    JUND_GM12878_HG19         2    0.023640 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10   MXI1    0.084750     MXI1_H1HESC_HG19         3    0.023800 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               9.358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              12.580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               7.167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               7.120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               6.919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               6.871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               6.680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               6.639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              10.850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               6.577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ReMap</span> - Interactions mined from the ReMap project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF Scaled Rank Set_name Intersect FET p-value   FDR Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  EOMES    0.003367    EOMES         3     0.01318 0.651      8.331</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  FOXP1    0.006734    FOXP1         3     0.01337 0.651      8.285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 POU5F1    0.010100   POU5F1         3     0.01344 0.651      8.268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4  KMT2B    0.013470    KMT2B         2     0.07561 0.651      5.558</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   RFX2    0.016840     RFX2         2     0.07569 0.651      5.554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6  DEAF1    0.020200    DEAF1         2     0.07595 0.651      5.543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7   KLF3    0.023570     KLF3         2     0.07595 0.651      5.543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8   TBXT    0.026940     TBXT         2     0.07604 0.651      5.539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9  CXXC4    0.030300    CXXC4         2     0.07604 0.651      5.539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10  BACH2    0.033670    BACH2         2     0.07604 0.651      5.539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Literature</span> - Interactions mined from the literature</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF Scaled Rank                                 Set_name Intersect</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1   EGR1    0.006098        EGR1_19374776_CHIPCHIP_THP1_HUMAN         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2   ESR1    0.012200        ESR1_15608294_CHIPCHIP_MCF7_HUMAN         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3  NANOG    0.018290       NANOG_18347094_CHIPCHIP_MESC_MOUSE         4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   E2F4    0.024390      E2F4_17652178_CHIPCHIP_JURKAT_HUMAN         3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5  STAT4    0.030490        STAT4_19710469_CHIPCHIP_TH1_MOUSE         3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6  BACH1    0.036590 BACH1_22875853_CHIPPCR_HELAANDSCP4_HUMAN         3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7  STAT3    0.042680  STAT3_22323479_CHIPSEQ_MACROPHAGE_MOUSE         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8  PPARD    0.048780    PPARD_23208498_CHIPSEQ_MDAMB231_HUMAN         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9   E2F7    0.054880         E2F7_22180533_CHIPSEQ_HELA_HUMAN         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10 POU5F1    0.060980      POU5F1_16153702_CHIPCHIP_HESC_HUMAN         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          FET p-value    FDR Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0002281 0.0589    123.000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0003840 0.0589     94.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0026980 0.2410     10.120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0031380 0.2410     14.330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0088110 0.3490      9.738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0100300 0.3490      9.264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0101400 0.3490    121.200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0106100 0.3490     16.770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0134000 0.3490     90.890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            0.0141500 0.3490     14.360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Coexpression</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ARCHS4</span> - TF-target coexpression in the ARCHS4 dataset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF Scaled Rank              Set_name Intersect FET p-value FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 ZBTB24   0.0006143 ZBTB24_ARCHS4_PEARSON         1     0.08493   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2   ZXDB   0.0012290   ZXDB_ARCHS4_PEARSON         1     0.08493   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 ZNF266   0.0018430 ZNF266_ARCHS4_PEARSON         1     0.08493   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4 ZNF575   0.0024570 ZNF575_ARCHS4_PEARSON         1     0.08493   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5  FOXP3   0.0030710  FOXP3_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6  FOXO1   0.0036860  FOXO1_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7 ZNF395   0.0043000 ZNF395_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8  PRDM9   0.0049140  PRDM9_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9 ZSCAN4   0.0055280 ZSCAN4_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10   ATF7   0.0061430   ATF7_ARCHS4_PEARSON         1     0.08520   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               13.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">GTEx</span> - TF-target coexpression in the GTEx dataset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank      TF Scaled Rank Set_name Intersect FET p-value   FDR Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  HIVEP1   0.0006223   HIVEP1         3   0.0001694 0.272      40.39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2    MAFF   0.0012450     MAFF         2   0.0042970 0.999      27.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3  ZNF800   0.0018670   ZNF800         2   0.0043250 0.999      26.93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   FOSL2   0.0024890    FOSL2         2   0.0043520 0.999      26.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5    ETV6   0.0031110     ETV6         2   0.0043520 0.999      26.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6   TGIF1   0.0037340    TGIF1         2   0.0043520 0.999      26.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7    ETS2   0.0043560     ETS2         2   0.0043520 0.999      26.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8   KLF15   0.0049780    KLF15         1   0.0843900 1.000      13.56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9    EGR1   0.0056000     EGR1         1   0.0846600 1.000      13.51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10 FOXD4L5   0.0062230  FOXD4L5         1   0.0846600 1.000      13.51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Co-occurrence</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Enrichr</span> - TF-target co-occurrence in Enrichr queries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank    TF Scaled Rank Set_name Intersect FET p-value      FDR Odds Ratio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1   SRY   0.0007123      SRY         5   1.465e-07 7.98e-06      69.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2 MYOD1   0.0014250    MYOD1         5   1.489e-07 7.98e-06      68.95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3    AR   0.0021370       AR         5   1.489e-07 7.98e-06      68.95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4 NR5A1   0.0028490    NR5A1         5   1.489e-07 7.98e-06      68.95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   PGR   0.0035610      PGR         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             6  TP73   0.0042740     TP73         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             7  E2F3   0.0049860     E2F3         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             8 SMAD3   0.0056980    SMAD3         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             9  ESR1   0.0064100     ESR1         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            10  ARNT   0.0071230     ARNT         5   1.514e-07 7.98e-06      68.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>    <span class="co"># Display only top 5 with specific columns</span></span></span>
+<span class="r-in"><span>    <span class="fu">displayTopN</span><span class="op">(</span><span class="va">results</span>, n <span class="op">=</span> <span class="fl">5</span>, columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rank"</span>, <span class="st">"TF"</span>, <span class="st">"Score"</span>, <span class="st">"FDR"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Top 5 per collection</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Integrated Results</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Mean Rank</span> - Average integrated ranks across libraries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 ZBTB24 48.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2 CSRNP1 66.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3  FOSL2 66.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4  RUNX1 73.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   ETS2 79.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Top Rank</span> - Top integrated rank across libraries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF     Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 ZBTB24 0.0006143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2 HIVEP1 0.0006223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3    SRY 0.0007123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   ZXDB 0.0012290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   MAFF 0.0012450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">ChIP-Seq</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ENCODE</span> - Interactions mined from the ENCODE project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF  FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  CEBPB 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  CEBPD 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 ZNF384 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4   IRF3 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   E2F4 0.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ReMap</span> - Interactions mined from the ReMap project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF   FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  EOMES 0.651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  FOXP1 0.651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 POU5F1 0.651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4  KMT2B 0.651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   RFX2 0.651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Literature</span> - Interactions mined from the literature</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank    TF    FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1  EGR1 0.0589</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2  ESR1 0.0589</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 NANOG 0.2410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4  E2F4 0.2410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5 STAT4 0.3490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Coexpression</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">ARCHS4</span> - TF-target coexpression in the ARCHS4 dataset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 ZBTB24   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2   ZXDB   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 ZNF266   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4 ZNF575   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5  FOXP3   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">GTEx</span> - TF-target coexpression in the GTEx dataset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank     TF   FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1 HIVEP1 0.272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2   MAFF 0.999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3 ZNF800 0.999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4  FOSL2 0.999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   ETV6 0.999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ► <span style="font-weight: bold;">Co-occurrence</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">Enrichr</span> - TF-target co-occurrence in Enrichr queries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Rank    TF      FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             1   SRY 7.98e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             2 MYOD1 7.98e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             3    AR 7.98e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             4 NR5A1 7.98e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             5   PGR 7.98e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ──────────────────── </span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
