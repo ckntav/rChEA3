@@ -1,0 +1,12 @@
+url: https://ckntav.github.io/rChEA3/
+
+authors:
+  "Christophe Tav":
+    href: https://ckntav.github.io/
+
+template:
+  bootstrap: 5
+  light-switch: true
+  bslib:
+    link-decoration: none
+

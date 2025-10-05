@@ -65,11 +65,14 @@ a descriptive label instead of individual library names.
 }
 \examples{
 \donttest{
-# Assuming `res` is a data frame returned by queryChEA3()[["Integrated--meanRank"]]
-visualizeRank(res, y_metric = "Score", top_n = 15)
+# Example with integrated meanRank results
+genes <- c("STAT3", "RELA", "MYC", "FOXO1", "TP53")
+results <- queryChEA3(genes, verbose = FALSE)
+meanRank_res <- results[["Integrated--meanRank"]]
+visualizeRank(meanRank_res, y_metric = "Score", top_n = 15)
 
-# Plot based on FDR
-res_chip <- queryChEA3(c("MYC","FOXO1"))[["ENCODE--ChIP-seq"]]
-visualizeRank(res_chip, y_metric = "FDR", fdr_threshold = 0.01)
+# Example with ChIP-seq results (FET p-value-based)
+chip_res <- results[["ENCODE--ChIP-seq"]]
+visualizeRank(chip_res, y_metric = "FET p-value")
 }
 }
