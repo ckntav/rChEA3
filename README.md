@@ -47,7 +47,13 @@ library(rChEA3)
 
 ``` r
 my_gene_list <- c("KLK3", "AR", "FKBP5", "TMPRSS2", "KLK2", "CYP1B1")
+```
 
+The gene list should consist of
+[HGNC](https://www.genenames.org)-approved gene symbols, as ChEA3 only
+accepts these standardized gene identifiers.
+
+``` r
 results <- queryChEA3(my_gene_list)
 #> Available results 
 #> ────────────────────────────── 
@@ -78,9 +84,10 @@ results <- queryChEA3(my_gene_list)
 ```
 
 This function sends the query gene list to the ChEA3 web server and
-performs the transcription factor enrichment analysis. Once the analysis
-is complete, the available results from different collections are
-displayed.
+performs the transcription factor enrichment analysis.
+
+Once the analysis is complete, the available results from different
+collections are displayed.
 
 > **Note:** For detailed information about the different ChEA3
 > collections and their underlying methodology, see [Keenan et al.,

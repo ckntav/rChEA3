@@ -1,7 +1,7 @@
 ---
 title: "rChEA3: An R client for ChEA3 transcription factor enrichment API"
 author: "Christophe Tav"
-date: "September 2025"
+date: "`r format(Sys.Date(), '%B %Y')`"
 output:
     html_document:
         toc: true
@@ -51,7 +51,7 @@ library(rChEA3)
 
 ## 1. Submit a gene list
 
-Provide a vector of gene symbols as input.
+Provide a vector of gene symbols as input. The gene list should consist of [HGNC](https://www.genenames.org)-approved gene symbols, as ChEA3 only accepts these standardized gene identifiers.
 
 ```{r submit}
 genes <- c("TP53", "ESR1", "MYC", "NIPBL", "BRCA1")
