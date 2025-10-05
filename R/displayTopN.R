@@ -18,7 +18,7 @@
 #'     displayTopN(results)
 #'
 #'     # Display only top 5 with specific columns
-#'     displayTopN(results, n = 5, columns = c("Rank", "TF", "Score", "FDR))
+#'     displayTopN(results, n = 5, columns = c("Rank", "TF", "Score", "FDR"))
 #' }
 displayTopN <- function(
         results,

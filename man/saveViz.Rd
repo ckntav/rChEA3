@@ -55,3 +55,20 @@ can be rendered using \code{print()} inside a graphics device. Optionally,
 the current date (stored in the \code{today} variable) can be prepended to
 the filename.
 }
+\examples{
+\donttest{
+    genes <- c("TP53", "MYC", "STAT3")
+    results <- queryChEA3(genes, verbose = FALSE)
+    meanRank_res <- results[["Integrated--meanRank"]]
+
+    # Create visualization
+    viz <- visualizeRank(meanRank_res)
+
+    # Save as PDF
+    saveViz(viz, output_dir = tempdir(), output_file = "chea3_results")
+
+    # Save as PNG with custom dimensions
+    saveViz(viz, output_dir = tempdir(), output_file = "chea3_results",
+            format = "png", width = 10, height = 6)
+}
+}
