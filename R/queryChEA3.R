@@ -123,6 +123,10 @@
 
 #' Query ChEA3 API for TF enrichment
 #'
+#'#' Sends a gene list to the ChEA3 web service to identify enriched
+#' transcription factors using multiple evidence sources.
+#' The gene list should consist of HGNC-approved gene symbols.
+#'
 #' @param genes Character vector of HGNC gene symbols.
 #' @param query_name Optional query name (default: "rChEA3_query").
 #' @param verbose Logical; if TRUE, print a grouped summary of available
@@ -138,8 +142,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+#' \donttest{
+#'     results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+#'     names(results)
+#'     head(results[["Integrated--meanRank"]])
 #' }
 queryChEA3 <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
     stopifnot(is.character(genes), length(genes) > 0)
@@ -147,19 +153,25 @@ queryChEA3 <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
     url <- "https://maayanlab.cloud/chea3/api/enrich/"
     payload <- list(query_name = query_name, gene_set = unname(genes))
 
-    resp <- httr::POST(url, body = payload, encode = "json")
+    resp <- tryCatch(
+        httr::POST(url, body = payload, encode = "json"),
+        error = function(e) {
+            stop("Failed to connect to ChEA3 API. Please check your internet connection.",
+                 call. = FALSE)
+        }
+    )
 
     if (httr::status_code(resp) != 200) {
-        stop("ChEA3 API request failed with status ", httr::status_code(resp))
+        stop("ChEA3 API request failed with status ", httr::status_code(resp),
+             ". Please try again later or check the API status at https://maayanlab.cloud/chea3/",
+             call. = FALSE)
     }
 
     txt <- httr::content(resp, "text", encoding = "UTF-8")
     parsed <- jsonlite::fromJSON(txt)
 
-    # results as list of R dataframes (one per collection)
     .check_chea3_collections(parsed)
     if (isTRUE(verbose)) {
-        # try to get the symbol name on the left-hand side
         .chea3_print_available(parsed)
     }
 

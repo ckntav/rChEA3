@@ -17,9 +17,14 @@
 #' @export
 #'
 #' @examples
-#' data(a549_dex_downreg)
-#' results <- queryChEA3(genes = a549_dex_downreg, query_name = "test_a549_dex_downreg")
-#' exportResults(results, output_dir = tempdir(), output_file = "rChEA3_results_a549_dex_downreg.xlsx")
+#' \donttest{
+#'     data(a549_dex_downreg)
+#'     results <- queryChEA3(genes = a549_dex_downreg, query_name = "test_a549_dex_downreg")
+#'     exportResults(results,
+#'     output_dir = tempdir(),
+#'     output_file = "rChEA3_results_a549_dex_downreg.xlsx")
+#' }
+
 exportResults <- function(results,
                           output_dir = ".",
                           output_file = "rChEA3_results",

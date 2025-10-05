@@ -37,7 +37,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Assuming `res` is a data frame returned by queryChEA3()[["Integrated--meanRank"]]
 #' visualizeRank(res, y_metric = "Score", top_n = 15)
 #'

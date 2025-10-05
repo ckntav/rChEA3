@@ -64,7 +64,7 @@ integrated collections (\verb{Mean Rank} and \verb{Top Rank}), the subtitle show
 a descriptive label instead of individual library names.
 }
 \examples{
-\dontrun{
+\donttest{
 # Assuming `res` is a data frame returned by queryChEA3()[["Integrated--meanRank"]]
 visualizeRank(res, y_metric = "Score", top_n = 15)
 

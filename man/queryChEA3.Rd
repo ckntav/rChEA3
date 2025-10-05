@@ -24,10 +24,14 @@ c("Integrated--meanRank", "Integrated--topRank",
 "Literature--ChIP-seq", "Enrichr--Queries").
 }
 \description{
-Query ChEA3 API for TF enrichment
+#' Sends a gene list to the ChEA3 web service to identify enriched
+transcription factors using multiple evidence sources.
+The gene list should consist of HGNC-approved gene symbols.
 }
 \examples{
-\dontrun{
-results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+\donttest{
+    results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
+    names(results)
+    head(results[["Integrated--meanRank"]])
 }
 }
