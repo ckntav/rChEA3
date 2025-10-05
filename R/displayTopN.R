@@ -8,6 +8,18 @@
 #' @return (Invisibly) a named list of data frames, each truncated to the first
 #'   \code{n} rows (and \code{columns} if provided).
 #' @export
+#'
+#' @examples
+#' \donttest{
+#'     genes <- c("TP53", "MYC", "STAT3", "FOXO1", "BRCA1")
+#'     results <- queryChEA3(genes, verbose = FALSE)
+#'
+#'     # Display top 10 TFs from each collection
+#'     displayTopN(results)
+#'
+#'     # Display only top 5 with specific columns
+#'     displayTopN(results, n = 5, columns = c("Rank", "TF", "Score", "FDR))
+#' }
 displayTopN <- function(
         results,
         n = 10,
