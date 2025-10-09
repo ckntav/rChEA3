@@ -7,7 +7,9 @@
 #'   \code{queryChEA3()}), where each element corresponds to a ChEA3
 #'   collection (e.g., "Integrated--meanRank", "ENCODE--ChIP-seq", etc.).
 #'   A single data frame is also accepted and will be written to one sheet.
-#' @param output_dir Directory where the workbook will be written. Default: \code{"."}.
+#' @param output_dir Directory where the workbook will be written.
+#'   This parameter is required and has no default.
+#'   Please specify your desired directory.
 #' @param output_file Base file name (without extension). Default: \code{"rChEA3_results"}.
 #' @param with_date Logical; if \code{TRUE}, prepend today's date (ISO, \code{YYYY-MM-DD})
 #'   to the file name. Default: \code{TRUE}.
@@ -26,12 +28,18 @@
 #' }
 
 exportResults <- function(results,
-                          output_dir = ".",
+                          output_dir,
                           output_file = "rChEA3_results",
                           with_date = TRUE,
                           verbose = TRUE) {
     if (!requireNamespace("writexl", quietly = TRUE)) {
         stop("Package 'writexl' is required but not installed.", call. = FALSE)
+    }
+
+    # Check that output_dir is provided
+    if (missing(output_dir)) {
+        stop("'output_dir' must be specified. Use tempdir() for temporary files or specify your desired directory.",
+             call. = FALSE)
     }
 
     # Accept a single data.frame as convenience
