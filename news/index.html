@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rChEA3</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,19 @@
       <small>Source: <a href="https://github.com/ckntav/rChEA3/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="rchea3-020">rChEA3 0.2.0<a class="anchor" aria-label="anchor" href="#rchea3-020"></a></h2>
+<div class="section level3">
+<h3 id="resubmission-cran-0-2-0">Resubmission (CRAN)<a class="anchor" aria-label="anchor" href="#resubmission-cran-0-2-0"></a></h3>
+<p>This version addresses CRAN reviewer comments from the initial submission:</p>
+<ul><li>
+<strong>Formatting Software Names</strong>: Added single quotes around software/API names (‘ChEA3’) in DESCRIPTION as per CRAN guidelines</li>
+<li>
+<strong>References</strong>: Added web reference to the ChEA3 API (<a href="https://maayanlab.cloud/chea3/" class="external-link uri">https://maayanlab.cloud/chea3/</a>) and original paper Keenan (2019) (<a href="doi:10.1093/nar/gkz446" class="uri">doi:10.1093/nar/gkz446</a>)in DESCRIPTION</li>
+<li>
+<strong>Writing Files</strong>: Removed default paths from <code><a href="../reference/exportResults.html">exportResults()</a></code> and <code><a href="../reference/saveViz.html">saveViz()</a></code> functions. The <code>output_dir</code> parameter is now required (users must explicitly specify their desired directory) to comply with CRAN policies</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="rchea3-010">rChEA3 0.1.0<a class="anchor" aria-label="anchor" href="#rchea3-010"></a></h2>
 <div class="section level3">
