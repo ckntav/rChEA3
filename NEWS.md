@@ -8,7 +8,7 @@ This version addresses CRAN reviewer comments from the initial submission:
   ('ChEA3') in DESCRIPTION as per CRAN guidelines
 * **References**: Added web reference to the ChEA3 API 
   (<https://maayanlab.cloud/chea3/>) and original paper Keenan (2019)
-  (<doi:10.1093/nar/gkz446>)in DESCRIPTION
+  (<doi:10.1093/nar/gkz446>) in DESCRIPTION
 * **Writing Files**: Removed default paths from `exportResults()` and `saveViz()` 
   functions. The `output_dir` parameter is now required (users must explicitly
   specify their desired directory) to comply with CRAN policies
