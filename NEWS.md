@@ -1,3 +1,5 @@
+# rChEA3 0.2.0
+
 # rChEA3 0.1.0
 
 ## Initial CRAN Release
