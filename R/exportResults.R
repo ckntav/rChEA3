@@ -7,9 +7,8 @@
 #'   \code{queryChEA3()}), where each element corresponds to a ChEA3
 #'   collection (e.g., "Integrated--meanRank", "ENCODE--ChIP-seq", etc.).
 #'   A single data frame is also accepted and will be written to one sheet.
-#' @param output_dir Directory where the workbook will be written.
-#'   This parameter is required and has no default.
-#'   Please specify your desired directory.
+#' @param output_dir A string specifying the output directory. This parameter
+#' is required and has no default.
 #' @param output_file Base file name (without extension). Default: \code{"rChEA3_results"}.
 #' @param with_date Logical; if \code{TRUE}, prepend today's date (ISO, \code{YYYY-MM-DD})
 #'   to the file name. Default: \code{TRUE}.

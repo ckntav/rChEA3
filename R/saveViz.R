@@ -10,8 +10,8 @@
 #' @param viz A visualization object typically created by
 #'   `visualizeRank()`, but can also be a `ggplot2` plot or
 #'   any other plot object printable with `print()`.
-#' @param output_dir A string specifying the output directory. Defaults
-#'   to `"."`.
+#' @param output_dir A string specifying the output directory. This parameter
+#' is required and has no default.
 #' @param output_file A string specifying the base filename (without
 #'   extension). Defaults to `"viz_rChEA3"`.
 #' @param format Output format. One of `"pdf"`, `"png"`, or `"svg"`.
@@ -46,7 +46,7 @@
 #'             format = "png", width = 10, height = 6)
 #' }
 saveViz <- function(viz,
-                    output_dir = ".",
+                    output_dir,
                     output_file = "figure_rChEA3",
                     format = "pdf",
                     with_date = TRUE,
@@ -55,6 +55,12 @@ saveViz <- function(viz,
                     resolution = 300,
                     verbose = TRUE) {
     format <- match.arg(format, choices = c("pdf", "png", "svg"))
+
+    # Check that output_dir is provided
+    if (missing(output_dir)) {
+        stop("'output_dir' must be specified. Use tempdir() for temporary files or specify your desired directory.",
+             call. = FALSE)
+    }
 
     if (!dir.exists(output_dir)) {
         dir.create(output_dir, recursive = TRUE)
