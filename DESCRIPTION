@@ -7,7 +7,7 @@ Authors@R:
     role = c("aut", "cre"),
     comment = c(ORCID = "0000-0001-8808-9617"))
 Description: Interface to the 'ChEA3' transcription factor enrichment API.
-    ChEA3 integrates evidence from ChIP-seq, co-expression, and literature
+    'ChEA3' integrates evidence from ChIP-seq, co-expression, and literature
     resources to prioritize transcription factors regulating a given set
     of genes. This package provides convenient R functions to query the API,
     retrieve ranked results across collections (including integrated scores),
