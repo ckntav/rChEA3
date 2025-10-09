@@ -37,7 +37,7 @@ exportResults <- function(results,
 
     # Check that output_dir is provided
     if (missing(output_dir)) {
-        stop("'output_dir' must be specified. Use tempdir() for temporary files or specify your desired directory.",
+        stop("'output_dir' must be specified. Please specify your desired directory.",
              call. = FALSE)
     }
 

@@ -161,6 +161,6 @@ test_that("saveViz requires output_dir", {
 
     expect_error(
         saveViz(viz, output_file = "test"),
-        "'output_dir' must be specified"
+        "'output_dir' must be specified. Please specify your desired directory."
     )
 })

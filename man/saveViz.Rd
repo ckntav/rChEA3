@@ -6,7 +6,7 @@
 \usage{
 saveViz(
   viz,
-  output_dir = ".",
+  output_dir,
   output_file = "figure_rChEA3",
   format = "pdf",
   with_date = TRUE,
@@ -21,8 +21,8 @@ saveViz(
 \code{visualizeRank()}, but can also be a \code{ggplot2} plot or
 any other plot object printable with \code{print()}.}
 
-\item{output_dir}{A string specifying the output directory. Defaults
-to \code{"."}.}
+\item{output_dir}{A string specifying the output directory. This parameter
+is required and has no default.}
 
 \item{output_file}{A string specifying the base filename (without
 extension). Defaults to \code{"viz_rChEA3"}.}

@@ -1,6 +1,6 @@
 test_that("exportResults validates input", {
-  expect_error(exportResults(list()), "non-empty list")
-  expect_error(exportResults("not a list"), "non-empty list")
+  expect_error(exportResults(list(), output_dir = temp_dir), "non-empty list")
+  expect_error(exportResults("not a list", output_dir = temp_dir), "non-empty list")
 })
 
 test_that("exportResults accepts single data frame", {
@@ -147,6 +147,6 @@ test_that("exportResults requires output_dir", {
 
     expect_error(
         exportResults(df, output_file = "test"),
-        "'output_dir' must be specified"
+        "'output_dir' must be specified. Please specify your desired directory."
     )
 })

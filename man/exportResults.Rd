@@ -6,7 +6,7 @@
 \usage{
 exportResults(
   results,
-  output_dir = ".",
+  output_dir,
   output_file = "rChEA3_results",
   with_date = TRUE,
   verbose = TRUE
@@ -18,7 +18,8 @@ exportResults(
 collection (e.g., "Integrated--meanRank", "ENCODE--ChIP-seq", etc.).
 A single data frame is also accepted and will be written to one sheet.}
 
-\item{output_dir}{Directory where the workbook will be written. Default: \code{"."}.}
+\item{output_dir}{A string specifying the output directory. This parameter
+is required and has no default.}
 
 \item{output_file}{Base file name (without extension). Default: \code{"rChEA3_results"}.}
 
