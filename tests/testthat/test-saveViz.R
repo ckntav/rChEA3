@@ -154,3 +154,13 @@ test_that("saveViz works with base R plots", {
   # Clean up
   unlink(path)
 })
+
+test_that("saveViz requires output_dir", {
+    df <- data.frame(TF = "TF1", Rank = 1, Score = 0.9)
+    viz <- visualizeRank(df, y_metric = "Score", top_n = 1)
+
+    expect_error(
+        saveViz(viz, output_file = "test"),
+        "'output_dir' must be specified"
+    )
+})

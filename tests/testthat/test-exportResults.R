@@ -141,3 +141,12 @@ test_that("exportResults handles long sheet names", {
   # Clean up
   unlink(path)
 })
+
+test_that("exportResults requires output_dir", {
+    df <- data.frame(TF = "MYC", Rank = 1, Score = 0.95)
+
+    expect_error(
+        exportResults(df, output_file = "test"),
+        "'output_dir' must be specified"
+    )
+})
