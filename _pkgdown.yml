@@ -6,6 +6,7 @@ authors:
 
 template:
   bootstrap: 5
+  bootswatch: flatly
   light-switch: true
   bslib:
     link-decoration: none
