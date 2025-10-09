@@ -12,6 +12,7 @@ Description: Interface to the 'ChEA3' transcription factor enrichment API.
     of genes. This package provides convenient R functions to query the API,
     retrieve ranked results across collections (including integrated scores),
     and standardize output for downstream analysis in R/Bioconductor workflows.
+    See <https://maayanlab.cloud/chea3/> or Keenan (2019) <doi:10.1093/nar/gkz446> for further details.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
