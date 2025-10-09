@@ -49,13 +49,13 @@
 #' visualizeRank(chip_res, y_metric = "FET p-value")
 #' }
 visualizeRank <- function(df_result,
-                                y_metric = c("auto", "FDR", "FET p-value", "Score"),
-                                fdr_threshold = 0.05,
-                                p_threshold = 0.05,
-                                query_name = "myGeneList",
-                                title_plot = "rChEA3 results (transcription factor enrichment analysis)",
-                                top_n = 10,
-                                fill_color = "#7AAACE") {
+                          y_metric = c("auto", "FDR", "FET p-value", "Score"),
+                          fdr_threshold = 0.05,
+                          p_threshold = 0.05,
+                          query_name = "myGeneList",
+                          title_plot = "rChEA3 results (transcription factor enrichment analysis)",
+                          top_n = 10,
+                          fill_color = "#7AAACE") {
     y_metric <- match.arg(y_metric)
 
     # --- Checks
