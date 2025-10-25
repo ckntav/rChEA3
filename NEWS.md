@@ -1,3 +1,10 @@
+# rChEA3 0.2.1
+
+## Minor updates
+
+* Package now available on CRAN: `install.packages("rChEA3")`
+* Updated documentation in vignette and README: added installation instructions following CRAN acceptance
+
 # rChEA3 0.2.0
 
 ## Resubmission (CRAN)
@@ -15,12 +22,12 @@ This version addresses CRAN reviewer comments from the initial submission:
 
 # rChEA3 0.1.0
 
-## Initial CRAN Release
+## Initial CRAN release
 
 This is the first release of rChEA3, an R client for the ChEA3 transcription 
 factor enrichment API.
 
-### Main Features
+### Main features
 
 * **API Interface**
   - `queryChEA3()`: Query the ChEA3 API with gene lists to identify enriched 

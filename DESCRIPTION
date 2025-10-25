@@ -1,6 +1,6 @@
 Package: rChEA3
 Title: R Client for the 'ChEA3' Transcription Factor Enrichment API
-Version: 0.2.0
+Version: 0.2.1
 Authors@R:
     person("Christophe", "Tav",
     email = "christophe.tav@gmail.com",
