@@ -5,6 +5,8 @@
 
 ![Maintainer](https://img.shields.io/badge/maintainer-ckntav-blue)
 ![Last commit](https://img.shields.io/github/last-commit/ckntav/rChEA3)
+![CRAN status](https://www.r-pkg.org/badges/version/rChEA3) ![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/rChEA3)
 
 **An R client for the [ChEA3](https://maayanlab.cloud/chea3/)
 transcription factor enrichment API.**
