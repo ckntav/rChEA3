@@ -26,12 +26,24 @@ generate publication-ready figures.
 
 ## Installation
 
+### From CRAN (stable version)
+
+``` r
+install.packages("rChEA3")
+```
+
+### From GitHub (development version)
+
 You can install the development version of rChEA3 from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
+# install.packages("pak")  # if not already installed
 pak::pak("ckntav/rChEA3")
+
+# or, alternatively:
+# install.packages("devtools")  # if not already installed
+devtools::install_github("ckntav/rChEA3")
 ```
 
 ## Quick start
