@@ -48,6 +48,11 @@ pak::pak("ckntav/rChEA3")
 devtools::install_github("ckntav/rChEA3")
 ```
 
+## Documentation
+
+For comprehensive documentation and vignettes, visit the [rChEA3
+documentation page](https://ckntav.github.io/rChEA3/).
+
 ## Quick start
 
 This quick example demonstrates how to conveniently interrogate the
@@ -342,5 +347,5 @@ omics integration. *Nucleic Acids Research*, 47(W1), W212–W224.
 
 - [ChEA3 web server](https://maayanlab.cloud/chea3/) - For detailed
   information about collections and methodology
-- [Original Publication](https://doi.org/10.1093/nar/gkz446) - ChEA3
-  paper in Nucleic Acids Research
+- [Original publication](https://doi.org/10.1093/nar/gkz446) - ChEA3
+  paper in *Nucleic Acids Research*
