@@ -105,6 +105,19 @@ results <- queryChEA3(my_gene_list)
 This function sends the query gene list to the ChEA3 web server and
 performs the transcription factor enrichment analysis.
 
+By default, the query is sent to the public ChEA3 API
+(`https://maayanlab.cloud/chea3/api/enrich/`). If you run a local or
+self-hosted ChEA3 instance (see the [ChEA3 source
+repository](https://github.com/MaayanLab/chea3)), pass its endpoint
+through the `url` argument:
+
+``` r
+results <- queryChEA3(my_gene_list,
+                      url = "http://localhost:8080/chea3/api/enrich/")
+```
+
+The URL must point to the full `enrich/` endpoint.
+
 Once the analysis is complete, the available results from different
 collections are displayed.
 

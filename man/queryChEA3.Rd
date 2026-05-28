@@ -4,7 +4,12 @@
 \alias{queryChEA3}
 \title{Query ChEA3 API for TF enrichment}
 \usage{
-queryChEA3(genes, query_name = "rChEA3_query", verbose = TRUE)
+queryChEA3(
+  genes,
+  query_name = "rChEA3_query",
+  verbose = TRUE,
+  url = "https://maayanlab.cloud/chea3/api/enrich/"
+)
 }
 \arguments{
 \item{genes}{Character vector of HGNC gene symbols.}
@@ -13,6 +18,13 @@ queryChEA3(genes, query_name = "rChEA3_query", verbose = TRUE)
 
 \item{verbose}{Logical; if TRUE, print a grouped summary of available
 result collections (default: TRUE).}
+
+\item{url}{Character; full URL of the ChEA3 enrichment endpoint.
+Defaults to the public API at
+\code{"https://maayanlab.cloud/chea3/api/enrich/"}. Override this to
+point at a local or self-hosted ChEA3 instance (see
+\url{https://github.com/MaayanLab/chea3}). The URL must include the
+full \code{enrich/} path.}
 }
 \value{
 A named list of data frames. Each element corresponds to a ChEA3
@@ -33,5 +45,11 @@ The gene list should consist of HGNC-approved gene symbols.
     results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
     names(results)
     head(results[["Integrated--meanRank"]])
+
+    # Querying a local ChEA3 server
+    # results <- queryChEA3(
+    #     c("SMAD9","FOXO1","MYC"),
+    #     url = "http://localhost:8080/chea3/api/enrich/"
+    # )
 }
 }

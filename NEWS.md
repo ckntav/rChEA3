@@ -1,3 +1,11 @@
+# rChEA3 1.1.1
+
+## New features
+
+* `queryChEA3()` gains a `url` argument so users can target a local or
+  self-hosted ChEA3 instance instead of the public API. Defaults to the
+  public endpoint `https://maayanlab.cloud/chea3/api/enrich/`.
+
 # rChEA3 0.2.1
 
 ## Minor updates

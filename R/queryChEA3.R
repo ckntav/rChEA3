@@ -131,6 +131,12 @@
 #' @param query_name Optional query name (default: "rChEA3_query").
 #' @param verbose Logical; if TRUE, print a grouped summary of available
 #'   result collections (default: TRUE).
+#' @param url Character; full URL of the ChEA3 enrichment endpoint.
+#'   Defaults to the public API at
+#'   \code{"https://maayanlab.cloud/chea3/api/enrich/"}. Override this to
+#'   point at a local or self-hosted ChEA3 instance (see
+#'   \url{https://github.com/MaayanLab/chea3}). The URL must include the
+#'   full \code{enrich/} path.
 #'
 #' @return A named list of data frames. Each element corresponds to a ChEA3
 #'   collection and contains an enrichment table with transcription factors and
@@ -146,11 +152,20 @@
 #'     results <- queryChEA3(c("SMAD9","FOXO1","MYC","STAT1","STAT3","SMAD3"))
 #'     names(results)
 #'     head(results[["Integrated--meanRank"]])
+#'
+#'     # Querying a local ChEA3 server
+#'     # results <- queryChEA3(
+#'     #     c("SMAD9","FOXO1","MYC"),
+#'     #     url = "http://localhost:8080/chea3/api/enrich/"
+#'     # )
 #' }
-queryChEA3 <- function(genes, query_name = "rChEA3_query", verbose = TRUE) {
-    stopifnot(is.character(genes), length(genes) > 0)
+queryChEA3 <- function(genes,
+                       query_name = "rChEA3_query",
+                       verbose = TRUE,
+                       url = "https://maayanlab.cloud/chea3/api/enrich/") {
+    stopifnot(is.character(genes), length(genes) > 0,
+              is.character(url), length(url) == 1, nzchar(url))
 
-    url <- "https://maayanlab.cloud/chea3/api/enrich/"
     payload <- list(query_name = query_name, gene_set = unname(genes))
 
     resp <- tryCatch(

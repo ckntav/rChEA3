@@ -79,6 +79,14 @@ genes <- c("TP53", "ESR1", "MYC", "NIPBL", "BRCA1")
 results <- queryChEA3(genes)
 ```
 
+By default, the query is sent to the public ChEA3 API (`https://maayanlab.cloud/chea3/api/enrich/`). If you run a local or self-hosted ChEA3 instance (see the [ChEA3 source repository](https://github.com/MaayanLab/chea3)), pass its endpoint through the `url` argument:
+
+```{r submit_local, eval=FALSE}
+results <- queryChEA3(genes, url = "http://localhost:8080/chea3/api/enrich/")
+```
+
+The URL must point to the full `enrich/` endpoint.
+
 > **Note:** For detailed information about the different ChEA3 collections and their underlying methodology, see [Keenan et al., 2019](https://doi.org/10.1093/nar/gkz446).
 
 ## 2. Inspect top results
