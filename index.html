@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>R Client for the ChEA3 Transcription Factor Enrichment API • rChEA3</title>
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R Client for the ChEA3 Transcription Factor Enrichment API">
 <meta name="description" content="Interface to the ChEA3 transcription factor enrichment API. ChEA3 integrates evidence from ChIP-seq, co-expression, and literature resources to prioritize transcription factors regulating a given set of genes. This package provides convenient R functions to query the API, retrieve ranked results across collections (including integrated scores), and standardize output for downstream analysis in R/Bioconductor workflows. See &lt;https://maayanlab.cloud/chea3/&gt; or Keenan (2019) &lt;doi:10.1093/nar/gkz446&gt; for further details.">
@@ -24,7 +24,7 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 
     <a class="navbar-brand me-2" href="index.html">rChEA3</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,6 +134,11 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 <span><span class="co">#&gt;         Use &lt;your_result&gt;[["Enrichr--Queries"]]</span></span>
 <span><span class="co">#&gt;   ────────────────────</span></span></code></pre></div>
 <p>This function sends the query gene list to the ChEA3 web server and performs the transcription factor enrichment analysis.</p>
+<p>By default, the query is sent to the public ChEA3 API (<code>https://maayanlab.cloud/chea3/api/enrich/</code>). If you run a local or self-hosted ChEA3 instance (see the <a href="https://github.com/MaayanLab/chea3" class="external-link">ChEA3 source repository</a>), pass its endpoint through the <code>url</code> argument:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/queryChEA3.html">queryChEA3</a></span><span class="op">(</span><span class="va">my_gene_list</span>,</span>
+<span>                      url <span class="op">=</span> <span class="st">"http://localhost:8080/chea3/api/enrich/"</span><span class="op">)</span></span></code></pre></div>
+<p>The URL must point to the full <code>enrich/</code> endpoint.</p>
 <p>Once the analysis is complete, the available results from different collections are displayed.</p>
 <blockquote>
 <p><strong>Note:</strong> For detailed information about the different ChEA3 collections and their underlying methodology, see <a href="https://doi.org/10.1093/nar/gkz446" class="external-link">Keenan et al., 2019</a>.</p>
@@ -143,7 +148,7 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 <h3 id="id_2-inspect-top-results">2. Inspect top results<a class="anchor" aria-label="anchor" href="#id_2-inspect-top-results"></a>
 </h3>
 <p>The function displayTopN() allows quick inspection of the results by showing the top-ranked transcription factors from each collection. By default, the top 10 transcription factors are displayed for every collection, without applying any threshold on score, p-value, or FDR.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/displayTopN.html">displayTopN</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Top 10 per collection </span></span>
 <span><span class="co">#&gt; ────────────────────────────── </span></span>
@@ -299,7 +304,7 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 <p>The function queryChEA3() returns a list of data frames, one for each ChEA3 collection. Each element of the list contains transcription factors (TFs) with their associated statistics (rank, score, p-value, or FDR depending on the collection).</p>
 <p>To access a specific result table, use the variable storing the results and specify the corresponding collection name. These tables can be indexed by name, explored, filtered, and integrated into downstream R/Bioconductor analyses.</p>
 <p>As an example, the Mean Rank integrated results can be retrieved with:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meanRank_results</span> <span class="op">&lt;-</span> <span class="va">results</span><span class="op">[[</span><span class="st">"Integrated--meanRank"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">meanRank_results</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     Query Name Rank      TF Score</span></span>
@@ -329,7 +334,7 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 <h3 id="id_4-visualize-results">4. Visualize results<a class="anchor" aria-label="anchor" href="#id_4-visualize-results"></a>
 </h3>
 <p>The function visualizeRank() creates a bar plot of the top-ranked transcription factors from a result table. By default, the plot displays the most significant TFs in descending order, making it easy to quickly identify the strongest candidates for your gene list.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/visualizeRank.html">visualizeRank</a></span><span class="op">(</span><span class="va">meanRank_results</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-visualize-1.png" width="100%"></p>
 </div>
@@ -401,7 +406,7 @@ gtag('config', 'G-9JTJYY7JJF'); </script>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

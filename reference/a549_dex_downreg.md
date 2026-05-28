@@ -1,0 +1,50 @@
+# A549 Downregulated Genes (Dex)
+
+Example gene set of downregulated (repressed) genes in A549 cells after
+dexamethasone treatment. To keep the dataset small and suitable for
+examples and tests, only the first 15 downregulated gene symbols are
+included here.
+
+## Usage
+
+``` r
+a549_dex_downreg
+```
+
+## Format
+
+A character vector of length 15, containing HGNC gene symbols.
+
+## Source
+
+Supplementary Table S3 from Tav *et al.* (2023).
+
+## Details
+
+The full list of differentially expressed genes (activated and
+repressed) is provided as Supplementary Table S3 in Tav *et al.* (2023).
+The raw Excel file can be downloaded directly from *Frontiers in
+Genetics*:
+<https://www.frontiersin.org/api/v4/articles/1237092/file/Table_3.XLSX/1237092_supplementary-materials_tables_3_xlsx/1>.
+
+In this package, we subset the data to only the first 15 repressed
+genes, which are stored in the object `a549_dex_downreg`.
+
+## References
+
+Tav C, Fournier É, Fournier M, Khadangi F, Baguette A, Côté MC, Silveira
+MAD, Bérubé-Simard F-A, Bourque G, Droit A, Bilodeau S (2023).
+"Glucocorticoid stimulation induces regionalized gene responses within
+topologically associating domains." *Frontiers in Genetics*.
+[doi:10.3389/fgene.2023.1237092](https://doi.org/10.3389/fgene.2023.1237092)
+
+## Examples
+
+``` r
+# Load dataset
+data(a549_dex_downreg)
+a549_dex_downreg
+#>  [1] "MIR23AHG" "IER2"     "BHLHE40"  "IER3"     "PLK2"     "EDN1"    
+#>  [7] "NUAK2"    "HES1"     "GEM"      "IER5"     "MEGF6"    "MTCO2P12"
+#> [13] "DHRS3"    "PTAFR"    "EPHA2"   
+```
