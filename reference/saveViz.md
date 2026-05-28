@@ -87,11 +87,11 @@ path to the saved file.
 
     # Save as PDF
     saveViz(viz, output_dir = tempdir(), output_file = "chea3_results")
-#>  > Visualization (pdf) saved in /tmp/RtmpGbzMAJ/20260528_chea3_results.pdf
+#>  > Visualization (pdf) saved in /tmp/RtmpOJlQP4/20260528_chea3_results.pdf
 
     # Save as PNG with custom dimensions
     saveViz(viz, output_dir = tempdir(), output_file = "chea3_results",
             format = "png", width = 10, height = 6)
-#>  > Visualization (png) saved in /tmp/RtmpGbzMAJ/20260528_chea3_results.png
+#>  > Visualization (png) saved in /tmp/RtmpOJlQP4/20260528_chea3_results.png
 # }
 ```

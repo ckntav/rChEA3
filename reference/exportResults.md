@@ -82,6 +82,6 @@ exportResults(
     exportResults(results,
     output_dir = tempdir(),
     output_file = "rChEA3_results_a549_dex_downreg.xlsx")
-#>  > rChEA3 results saved in /tmp/RtmpGbzMAJ/20260528_rChEA3_results_a549_dex_downreg.xlsx
+#>  > rChEA3 results saved in /tmp/RtmpOJlQP4/20260528_rChEA3_results_a549_dex_downreg.xlsx
 # }
 ```

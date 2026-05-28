@@ -1,6 +1,6 @@
 # Changelog
 
-## rChEA3 1.1.1
+## rChEA3 1.0.1
 
 ### New features
 
